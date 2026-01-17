@@ -1,0 +1,26 @@
+[project]
+name = "cat-vocal-swapper"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Zac Faulks", email = "92555610+Toggleableable@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "librosa>=0.11.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.3.5",
+]
+
+[project.scripts]
+cat-vocal-swapper = "cat_vocal_swapper:main"
+test = "cat_vocal_swapper.audio_test:test"
+
+[build-system]
+requires = ["uv_build>=0.9.26,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
