@@ -2,25 +2,26 @@ import librosa
 import numpy as np
 from numpy.typing import NDArray
 
+from .audio_functions import load_audio, play
 from .visualise import visualise
 
 
 def test() -> None:
     path: str = "test.mp3"
+    audio, sample_rate = load_audio(path)
+    segments = split_audio_by_onsets(audio, sample_rate)
 
-    segments = split_audio_by_onsets(path)
-    print(len(segments))
+    # print(len(segments))
     for i in segments:
-        visualise(i)
+        play(i, sample_rate)
+        visualise(i, sample_rate)
 
 
 def split_audio_by_onsets(
-    audio_path: str,
+    audio: NDArray[np.float32],
+    sample_rate: float,
     backtrack: bool = True,
 ) -> list[NDArray[np.float32]]:
-    audio: NDArray[np.float32]
-    sample_rate: float
-    audio, sample_rate = librosa.load(audio_path, sr=None, mono=True)
     onset_samples = librosa.onset.onset_detect(
         y=audio, sr=sample_rate, backtrack=backtrack, units="samples"
     )
