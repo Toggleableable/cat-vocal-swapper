@@ -1,3 +1,5 @@
+import os
+
 import librosa
 import numpy as np
 import sounddevice as sd  # pyright: ignore[reportMissingTypeStubs]
@@ -19,6 +21,17 @@ def play(
 
 def export(audio: NDArray[np.float32], sample_rate: float) -> None:
     sf.write("output.mp3", audio, sample_rate)  # pyright: ignore[reportUnknownMemberType]
+
+
+def export_segments(audio_list: list[NDArray[np.float32]], sample_rate: float) -> None:
+    output_folder = "outputs"
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    segment_number = 1
+    for audio in audio_list:
+        filename = f"outputs/out{segment_number:02d}.mp3"
+        sf.write(filename, audio, sample_rate)  # pyright: ignore[reportUnknownMemberType]
+        segment_number += 1
 
 
 def split_audio_by_onsets(
