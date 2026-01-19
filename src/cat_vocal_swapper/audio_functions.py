@@ -23,8 +23,9 @@ def export(audio: NDArray[np.float32], sample_rate: float) -> None:
     sf.write("output.mp3", audio, sample_rate)  # pyright: ignore[reportUnknownMemberType]
 
 
-def export_segments(audio_list: list[NDArray[np.float32]], sample_rate: float) -> None:
-    output_folder = "outputs"
+def export_segments(
+    audio_list: list[NDArray[np.float32]], sample_rate: float, output_folder: str
+) -> None:
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     segment_number = 1
