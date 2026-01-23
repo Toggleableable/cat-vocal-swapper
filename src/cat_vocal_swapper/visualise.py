@@ -3,7 +3,7 @@ from librosa.display import waveshow
 from matplotlib import pyplot as plt
 from numpy.typing import NDArray
 
-# pyright: reportUnknownMemberType=false, reportUnusedCallResult=false
+# pyright: reportUnknownMemberType=false, reportUnusedCallResult=false, reportUnknownVariableType=false
 
 
 def visualise(samples: NDArray[np.float32], sample_rate: float) -> None:

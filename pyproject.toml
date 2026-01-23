@@ -6,11 +6,13 @@ readme = "README.md"
 authors = [
     { name = "Zac Faulks", email = "92555610+Toggleableable@users.noreply.github.com" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
+    "basic-pitch>=0.4.0",
     "librosa>=0.11.0",
     "matplotlib>=3.10.8",
-    "numpy>=2.3.5",
+    "numpy>=2.2.6",
+    "setuptools>=80.10.1",
     "sounddevice>=0.5.3",
 ]
 

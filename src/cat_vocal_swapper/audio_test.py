@@ -1,4 +1,5 @@
 import os
+import time
 
 from scipy.spatial.distance import cosine
 
@@ -10,10 +11,17 @@ from .audio_functions import (
     split_audio_by_onsets,
 )
 from .comparison_test import extract_music_features
+from .midi_conversion import convert_to_midi
 from .visualise import visualise
 
 
 def test() -> None:
+    path: str = "test audio/test_diamonds_de-reverbed.mp3"
+    midi = convert_to_midi(path)
+    # print(midi)
+
+
+def new_test() -> None:
     path: str = "outputs/out11.mp3"
     audio, sample_rate = load_audio(path)
     # audio = split_audio_by_onsets(audio, sample_rate)[2]
